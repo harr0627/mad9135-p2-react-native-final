@@ -1,9 +1,19 @@
-import React from 'react'
-
+import React from 'react';
+import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
 export default function QuestDetails() {
   return (
-    <div>
-      gesture handler goes here  also with button for delete.
-    </div>
-  )
+    <SafeAreaView style={styles.container}>
+      <Text>gesture handler goes here also with button for delete.</Text>
+    </SafeAreaView>
+  );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F2F2F2',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+  },
+});
