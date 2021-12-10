@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
-export default function NewItemScreen() {
+
+export default function AboutScreen() {
   return (
-    <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
-      <Text>This is page where the NewEdit component goes.</Text>
+    <SafeAreaView style={styles.container}>
+      <Text>About Screen</Text>
     </SafeAreaView>
   );
 }
