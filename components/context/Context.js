@@ -6,7 +6,7 @@ const DataContext = createContext();
 const DataProvider = (props) => {
   
   const [data, setData] = useState([])
-  const [questPoints, setQuestPoints] = useState(0)
+  const [questPoints, setQuestPoints] = useState(0) // maybe not this (keep it local?)
 
   useEffect(()=>{
     // first load. async storage fetch from here. once async is initialized
