@@ -8,11 +8,13 @@ import AboutScreen from './screens/AboutScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { DataProvider } from './components/context/Context';
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
+    <DataProvider>
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
@@ -43,6 +45,7 @@ export default function App() {
         <Tab.Screen name="About" component={AboutScreen} />
       </Tab.Navigator>
     </NavigationContainer>
+    </DataProvider>
   );
 }
 

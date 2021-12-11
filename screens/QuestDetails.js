@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
+
 export default function QuestDetails() {
   return (
     <SafeAreaView style={styles.container}>
