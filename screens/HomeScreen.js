@@ -4,28 +4,21 @@ import { useState, useEffect } from 'react';
 import { useData } from '../components/context/Context'
 import Task from '../components/Task';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import QuestDetails from './QuestDetails';
+import HomeList from './HomeList';
+
+const Stack = createStackNavigator();
 
 export default function HomeScreen() {
-  const [data, updateData] = useData()
-  const [nonComplete, setNonComplete] = useState()
+
   //stack navigation here with name list and name details
-  
-useEffect(()=>{
-  setNonComplete(data.filter(el=> el.taskCompleted===false ))
-},[data])
 
   return (
-    <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
-      <Text>
-        We'll put the flatlist here that has a pressable that shows the
-        QuestDetails screen on press
-      </Text>
-      <FlatList data={nonComplete}
-      renderItem={item => <Task task={item}/>}
-      keyExtractor={(item, index)=> item.taskTitle + "-" + index}  
-      ListEmptyComponent={<Text>No Data. Such Sad.</Text>}    
-      />
-    </SafeAreaView>
+    <Stack.Navigator>
+      <Stack.Screen name="homeList" component={HomeList}/>
+      <Stack.Screen name="questDetails" component={QuestDetails}/>
+    </Stack.Navigator>
   );
 }
 const styles = StyleSheet.create({
