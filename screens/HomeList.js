@@ -1,17 +1,18 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
-import { useState, useEffect } from 'react';
+import React from 'react'
+import { Text, FlatList, SafeAreaView, StyleSheet  } from 'react-native'
+import Task from '../components/Task'
 import { useData } from '../components/context/Context'
-import Task from '../components/Task';
+import { useState, useEffect } from 'react';
 
-export default function CompletedQuestScreen() {
+
+
+export default function HomeList() {
   const [data, updateData] = useData()
-  const [complete, setComplete] = useState()
-  //stack navigation here with name list and name details
-  
-useEffect(()=>{
-  setComplete(data.filter(el=> el.taskCompleted===true ))
-},[data])
+  const [nonComplete, setNonComplete] = useState()
+
+  useEffect(()=>{
+    setNonComplete(data.filter(el=> el.taskCompleted===false ))
+  },[data])
 
   return (
     <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
@@ -19,13 +20,13 @@ useEffect(()=>{
         We'll put the flatlist here that has a pressable that shows the
         QuestDetails screen on press
       </Text>
-      <FlatList data={complete}
+      <FlatList data={nonComplete}
       renderItem={item => <Task task={item}/>}
       keyExtractor={(item, index)=> item.taskTitle + "-" + index}  
       ListEmptyComponent={<Text>No Data. Such Sad.</Text>}    
       />
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -38,5 +39,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
 });
-
-//we will need to change the task list to be not pressable.
