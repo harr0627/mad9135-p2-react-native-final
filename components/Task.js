@@ -27,8 +27,8 @@ export default function Task({ task, navigation }) {
   } else {
     return (
       <Pressable
-        onPressOut={(ev) => {
-          navigation.navigate('QuestDetails', task); //task might need to be key value pair
+        onPressOut={() => {
+          navigation.navigate('QuestDetails', { task: task.item }); //task might need to be key value pair
         }}
       >
         <View>
