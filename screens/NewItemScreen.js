@@ -42,13 +42,20 @@ export default function NewItemScreen({ navigation }) {
           title="Start Quest"
           onPress={(ev) => {
             if (!formTitle || !formDetails || !formMax) {
-              //put alert to notify user to enter all fields
+              console.log('you must fill out every option');
+            } else if (formMax == 0) {
+              console.log('Max Value cannot be zero');
+            } else if (isNaN(formMax)) {
+              console.log('Max Value must be a number');
             } else {
               updateData('INSERT', {
                 taskTitle: formTitle,
                 details: formDetails,
                 taskMaxValue: formMax,
               });
+              setFormTitle('');
+              setFormDetails('');
+              setFormMax('');
               navigation.navigate('Home');
               console.log('added quest');
             }
