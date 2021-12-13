@@ -31,9 +31,17 @@ export default function HomeScreen() {
         component={HomeList}
       />
       <Stack.Screen
-        name="questDetails"
+        name="QuestDetails"
         options={{
           title: 'Quest Details',
+          headerStyle: {
+            // backgroundColor: 'blue',
+            height: 40,
+          },
+          headerTitleStyle: {
+            fontWeight: 'light',
+            fontSize: 16,
+          },
         }}
         component={QuestDetails}
       />

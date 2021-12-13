@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, View, Text } from 'react-native';
 
-export default function Task({ task }) {
+export default function Task({ task, navigation }) {
   const {
     taskTitle,
     taskDetails,
@@ -27,8 +27,8 @@ export default function Task({ task }) {
   } else {
     return (
       <Pressable
-        onPress={(ev) => {
-          console.log('navigate to the QuestDetails Screen');
+        onPressOut={(ev) => {
+          navigation.navigate('QuestDetails', task); //task might need to be key value pair
         }}
       >
         <View>
