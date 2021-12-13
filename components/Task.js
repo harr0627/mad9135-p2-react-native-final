@@ -17,7 +17,7 @@ export default function Task({ task }) {
       <View>
         <Text>{taskTitle}</Text>
         <Text>{taskDetails}</Text>
-        <Text>Completed on: {completed}</Text>
+        {/* <Text>Completed on: {completed}</Text> */}
         <Text>
           Task value: {taskValue}/{taskMaxValue}
         </Text>

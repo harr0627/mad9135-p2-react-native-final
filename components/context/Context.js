@@ -1,6 +1,7 @@
 import React from 'react';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { firstData } from '../firstData';
+import { v4 as uuid } from 'uuid';
 
 const DataContext = createContext();
 
@@ -9,7 +10,7 @@ const DataProvider = (props) => {
     {
       id: 'asldkjalskdj',
       completed: '', //date done when the item is completed aka when the user swipes away as the items value is at it's max value // may not add
-      created: new Date('December 17, 1995 01:24:00'), // may not add
+      created: 'December 17, 1995 01:24:00', // may not add
       taskTitle: 'Bi-Weekly Walks',
       taskDetails: 'How many times I walk in January',
       taskCompleted: false,
@@ -21,8 +22,7 @@ const DataProvider = (props) => {
     },
     {
       id: 'asldkjalsasd',
-      completed: '',
-      created: new Date('December 20, 1995 01:24:00'),
+      complete: 'December 20, 1995 01:24:00',
       taskTitle: 'Workouts',
       taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
       taskCompleted: false,
@@ -32,8 +32,8 @@ const DataProvider = (props) => {
     },
     {
       id: 'alsasd',
-      completed: new Date('2016-01-04 10:34:23'),
-      created: new Date('December 20, 1995 01:24:00'),
+      completed: 'December 20, 1995 01:24:00',
+      created: 'December 20, 1995 01:24:00',
       taskTitle: 'Workouts',
       taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
       taskCompleted: true,
@@ -54,7 +54,7 @@ const DataProvider = (props) => {
   let dataExample = [
     {
       id: 'id sent from active',
-      completed: Date.now(), //date done when the item is completed aka when the user swipes away as the items value is at it's max value // may not add
+      completed: 'December 20, 1995 01:24:00', //date done when the item is completed aka when the user swipes away as the items value is at it's max value // may not add
       created: 'a date object sent from active', // may not add
       taskTitle: 'title set by User',
       taskDetails: 'details set by User',
@@ -74,8 +74,8 @@ const DataProvider = (props) => {
   //     console.log("calling delete API in context")
   //     console.log("The action: ",action,"the payload: ",payload)
   //     //find id in animals and delete item
-  //     //then setAnimals as mapped array
-  //     setAnimals(animals.filter((animal) => animal.id !== payload.id)); // TODO: WE NEED TO CHANGE THIS TO MATCH ANIMALS [ID] PAGE
+  //     //then setData as mapped array
+  //     setAnimals(animals.filter((item) => animal.id !== payload.id)); // TODO: WE NEED TO CHANGE THIS TO MATCH ANIMALS [ID] PAGE
   //   } else if (action === 'UPDATE') {
   //     // find by id in animals update properties of item
   //     console.log("Payload is: ",payload)
@@ -103,6 +103,39 @@ const DataProvider = (props) => {
   // }
 
   function updateData(item) {
+    //TODO: when updates made to data also update async storage
+    console.log(item);
+    if (action === 'DELETE') {
+      setData(data.filter((item) => item.id !== payload.id));
+    } else if (action === 'UPDATE') {
+      // find by id in data update properties of item
+      console.log('Payload is: ', payload);
+      setData(
+        data.map((item) => {
+          if (item.id == payload.id) {
+            return payload;
+          } else {
+            return item;
+          }
+        })
+      );
+    } else if (action === 'INSERT') {
+      setData([
+        ...data,
+        {
+          id: uuid(),
+          taskTitle: payload.taskTitle,
+          taskDetails: payload.taskDetails,
+          taskCompleted: false,
+          taskValue: 0,
+          taskMaxValue: payload.taskMaxValue,
+          questPointValue: 1,
+        },
+      ]);
+    } else {
+      console.log('action payload must be DELETE, UPDATE or INSERT');
+    }
+
     // this is where we need to update accomplished data with setData
     // this function will not behave different based on anything
     // check if item exists in array using id. update if it is not new. Add if it is new. then update array.
