@@ -1,9 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
-// import { useState, useEffect } from 'react';
-// import { useData } from '../components/context/Context';
-// import Task from '../components/Task';
-// import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import QuestDetails from './QuestDetails';
 import HomeList from './HomeList';
