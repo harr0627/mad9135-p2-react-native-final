@@ -102,9 +102,8 @@ const DataProvider = (props) => {
   //   }
   // }
 
-  function updateData(item) {
+  function updateData(action, payload) {
     //TODO: when updates made to data also update async storage
-    console.log(item);
     if (action === 'DELETE') {
       setData(data.filter((item) => item.id !== payload.id));
     } else if (action === 'UPDATE') {
