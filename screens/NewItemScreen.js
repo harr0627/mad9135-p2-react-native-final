@@ -23,19 +23,19 @@ export default function NewItemScreen({ navigation }) {
         <Text>What would you like your quest to be?</Text>
         <TextInput
           placeholder="Quest Title"
-          onChange={(e) => setFormTitle(e.target.value)}
+          onChangeText={(text) => setFormTitle(text)}
           value={formTitle}
         />
         <Text>Details about your quest</Text>
         <TextInput
           placeholder="Quest Details"
-          onChange={(e) => setFormDetails(e.target.value)}
+          onChangeText={(text) => setFormDetails(text)}
           value={formDetails}
         />
         <Text>How many times will you complete this task</Text>
         <TextInput
           placeholder="Max Value"
-          onChange={(e) => setFormMax(e.target.value)}
+          onChangeText={(text) => setFormMax(text)}
           value={formMax}
         />
         <Button
