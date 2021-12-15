@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import CompletedQuestScreen from './screens/CompletedQuestScreen';
 import NewItemScreen from './screens/NewItemScreen';
@@ -16,6 +15,10 @@ export default function App() {
   return (
     <DataProvider>
       <NavigationContainer>
+        <StatusBar
+        backgroundColor="#61dafb"
+        barStyle="dark-content"
+        />
         <Tab.Navigator
           initialRouteName="Home"
           screenOptions={({ route }) => ({

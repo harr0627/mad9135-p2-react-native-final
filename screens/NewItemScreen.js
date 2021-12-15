@@ -78,7 +78,7 @@ export default function NewItemScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F',
+    backgroundColor: '#F2F2F2',
     justifyContent: 'flex-start',
     // alignItems: 'stretch',
     paddingVertical: 20,
