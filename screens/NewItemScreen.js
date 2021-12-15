@@ -6,6 +6,8 @@ import {
   Text,
   View,
   SafeAreaView,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import { useData } from '../components/context/Context';
 
@@ -17,7 +19,11 @@ export default function NewItemScreen({ navigation }) {
   const [formMax, setFormMax] = useState('');
 
   return (
-    <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
+      <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+      >
+    <SafeAreaView edges={['right', 'bottom', 'left']}>
       <Text>Add New Quest.</Text>
       <View>
         <Text>What would you like your quest to be?</Text>
@@ -63,6 +69,7 @@ export default function NewItemScreen({ navigation }) {
         />
       </View>
     </SafeAreaView>
+      </KeyboardAvoidingView>
   );
 }
 const styles = StyleSheet.create({
