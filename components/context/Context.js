@@ -117,7 +117,17 @@ const DataProvider = (props) => {
             return item;
           }
         })
-      );
+      ); // updateup and updatedown >>>  data.map((item) => {
+        // if (item.id == payload.id) {
+            // another if check >> if (payload.taskvalue === payload.maxTaskValue) { // same with going down for not going below 0
+            // payload.taskValue = payload.maxTaskValue
+            // } else {
+              // payload.taskValue += 1 // and for down is -= 1
+            // }
+        //   return payload; //might have to move this in
+        // } else {
+        //   return item;
+        // }
     } else if (action === 'INSERT') {
       setData([
         ...data,

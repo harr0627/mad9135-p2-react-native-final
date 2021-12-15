@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, Button } from 'react-native';
 
 export default function QuestDetails({ route, navigation }) {
   //if return will allow for the gesture handler based off the items value of quest completed.
@@ -13,6 +13,7 @@ export default function QuestDetails({ route, navigation }) {
       <Text>{task.taskDetails}</Text>
       <Text>{task.taskValue}</Text>
       <Text>{task.taskMaxValue}</Text>
+      <Button/>
     </SafeAreaView>
   );
 }
