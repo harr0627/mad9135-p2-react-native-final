@@ -7,7 +7,9 @@ import {
   View,
   SafeAreaView,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import { useData } from '../components/context/Context';
 
@@ -23,8 +25,9 @@ export default function NewItemScreen({ navigation }) {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
       >
-      <Text>Add New Quest.</Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View>
+        <Text>Add New Quest.</Text>
         <Text>What would you like your quest to be?</Text>
         <TextInput
           placeholder="Quest Title"
@@ -67,6 +70,7 @@ export default function NewItemScreen({ navigation }) {
           }}
         />
       </View>
+      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
   );
 }
