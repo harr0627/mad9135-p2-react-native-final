@@ -2,54 +2,78 @@ import React from 'react';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { firstData } from '../firstData';
 import { v4 as uuid } from 'uuid';
+import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 
 const DataContext = createContext();
 
 const DataProvider = (props) => {
+  const {getItem, setItem} = useAsyncStorage('ExecMethodsQuest');
   const [data, setData] = useState([
-    {
-      id: 'asldkjalskdj',
-      completed: '', //date done when the item is completed aka when the user swipes away as the items value is at it's max value // may not add
-      created: 'December 17, 1995 01:24:00', // may not add
-      taskTitle: 'Bi-Weekly Walks',
-      taskDetails: 'How many times I walk in January',
-      taskCompleted: false,
-      taskValue: 0, //number changed when user flings up or do
-      taskMaxValue: 8, // number set by user
-      questPointValue: 1, // not reliant on taskMaxValue set by user.
-      // the onFling horizontal will hold the checks for changing taskCompleted and the updatelist call.
-      // onFling vertical will change the taskvalue up or down within range of 0 to taskMaxValue it will also updateData each fling.
-    },
-    {
-      id: 'asldkjalsasd',
-      complete: 'December 20, 1995 01:24:00',
-      taskTitle: 'Workouts',
-      taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
-      taskCompleted: false,
-      taskValue: 2,
-      taskMaxValue: 8,
-      questPointValue: 1,
-    },
-    {
-      id: 'alsasd',
-      completed: 'December 20, 1995 01:24:00',
-      created: 'December 20, 1995 01:24:00',
-      taskTitle: 'Workouts',
-      taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
-      taskCompleted: true,
-      taskValue: 8,
-      taskMaxValue: 8,
-      questPointValue: 1,
-    },
+    // {
+    //   id: 'asldkjalskdj',
+    //   completed: '', //date done when the item is completed aka when the user swipes away as the items value is at it's max value // may not add
+    //   created: 'December 17, 1995 01:24:00', // may not add
+    //   taskTitle: 'Bi-Weekly Walks',
+    //   taskDetails: 'How many times I walk in January',
+    //   taskCompleted: false,
+    //   taskValue: 0, //number changed when user flings up or do
+    //   taskMaxValue: 8, // number set by user
+    //   questPointValue: 1, // not reliant on taskMaxValue set by user.
+    //   // the onFling horizontal will hold the checks for changing taskCompleted and the updatelist call.
+    //   // onFling vertical will change the taskvalue up or down within range of 0 to taskMaxValue it will also updateData each fling.
+    // },
+    // {
+    //   id: 'asldkjalsasd',
+    //   complete: 'December 20, 1995 01:24:00',
+    //   taskTitle: 'Workouts',
+    //   taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
+    //   taskCompleted: false,
+    //   taskValue: 2,
+    //   taskMaxValue: 8,
+    //   questPointValue: 1,
+    // },
+    // {
+    //   id: 'alsasd',
+    //   completed: 'December 20, 1995 01:24:00',
+    //   created: 'December 20, 1995 01:24:00',
+    //   taskTitle: 'Workouts',
+    //   taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
+    //   taskCompleted: true,
+    //   taskValue: 8,
+    //   taskMaxValue: 8,
+    //   questPointValue: 1,
+    // },
   ]);
-  const [questPoints, setQuestPoints] = useState(0); // maybe not this (keep it local?)
+  const [questPoints, setQuestPoints] = useState(0); // maybe not this (keep it local?) // i'm pretty sure we put this in the component
+
+  const getDataFromStorage = async () => {
+    getItem()
+    .then((item)=> {
+      item = item === null ? [] : JSON.parse(item);
+      setData(item)
+    })
+    .catch(console.log)
+  }
+
+  const storeDataToStorage = async (value) => {
+  setItem(JSON.stringify(value))
+  .then(()=> {
+    console.log("saved data to storage")
+  })
+  }
 
   useEffect(() => {
+    getDataFromStorage()
     // first load. async storage fetch from here. once async is initialized
     // two storaged data pieces  which will hold activeData and pastaccomplished data
     // either quest points will be the result of the added values of pastaccomplished and returned/updated
     // or quest points will be entirely it's own entity that will be updated and read seperately from accomplished. NOT THIS
   }, []);
+
+  useEffect(()=>{
+    storeDataToStorage(data)
+  },[data])// may need to use this instead of calling the store each update call. >> look up hook for skipping first load???
+  
 
   let dataExample = [
     {
@@ -106,9 +130,11 @@ const DataProvider = (props) => {
     //TODO: when updates made to data also update async storage
     if (action === 'DELETE') {
       setData(data.filter((item) => item.id !== payload.id));
+      console.log("Deleted", payload.taskTitle)
+      // storeDataToStorage(data)
     } else if (action === 'UPDATE') {
       // find by id in data update properties of item
-      console.log('Payload is: ', payload);
+      console.log('Updating with: ', payload.taskTitle);
       setData(
         data.map((item) => {
           if (item.id == payload.id) {
@@ -117,7 +143,9 @@ const DataProvider = (props) => {
             return item;
           }
         })
-      ); // updateup and updatedown >>>  data.map((item) => {
+      ); 
+      // storeDataToStorage(data)
+      // updateup and updatedown >>>  data.map((item) => {
         // if (item.id == payload.id) {
             // another if check >> if (payload.taskvalue === payload.maxTaskValue) { // same with going down for not going below 0
             // payload.taskValue = payload.maxTaskValue
@@ -141,6 +169,8 @@ const DataProvider = (props) => {
           questPointValue: 1,
         },
       ]);
+      // storeDataToStorage(data)
+      console.log("adding new item:", payload.taskTitle)
     } else {
       console.log('action payload must be DELETE, UPDATE or INSERT');
     }
