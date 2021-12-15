@@ -5,8 +5,8 @@ import { useData } from '../components/context/Context';
 import { useState, useEffect } from 'react';
 
 export default function HomeList({ navigation }) {
-  const [data, updateData] = useData();
-  const [nonComplete, setNonComplete] = useState();
+  const [data, updateData] = useData([]);
+  const [nonComplete, setNonComplete] = useState([]);
 
   useEffect(() => {
     setNonComplete(data.filter((el) => el.taskCompleted === false));

@@ -5,19 +5,27 @@ import { useData } from '../components/context/Context'
 import Task from '../components/Task';
 
 export default function CompletedQuestScreen() {
-  const [data, updateData] = useData()
-  const [complete, setComplete] = useState()
-  //stack navigation here with name list and name details
+  const [data, updateData] = useData([])
+  const [complete, setComplete] = useState([])
+  const [completePoints, setCompletePoints] = useState(0)
+
   
 useEffect(()=>{
   setComplete(data.filter(el=> el.taskCompleted===true ))
 },[data])
 
+useEffect(()=> {
+  let points = 0
+  complete.forEach(el => {
+    points += el.questPointValue
+  });
+  setCompletePoints(points)
+},[complete])
+
   return (
     <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
       <Text>
-        We'll put the flatlist here that has a pressable that shows the
-        QuestDetails screen on press
+        Here are the points from your completed tasks: {completePoints}
       </Text>
       <FlatList data={complete}
       renderItem={item => <Task task={item}/>}
