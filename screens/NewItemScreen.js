@@ -23,7 +23,6 @@ export default function NewItemScreen({ navigation }) {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
       >
-    <SafeAreaView edges={['right', 'bottom', 'left']}>
       <Text>Add New Quest.</Text>
       <View>
         <Text>What would you like your quest to be?</Text>
@@ -68,7 +67,6 @@ export default function NewItemScreen({ navigation }) {
           }}
         />
       </View>
-    </SafeAreaView>
       </KeyboardAvoidingView>
   );
 }
