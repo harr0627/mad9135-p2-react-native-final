@@ -22,11 +22,12 @@ export default function NewItemScreen({ navigation }) {
 
   return (
       <KeyboardAvoidingView
+      style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View>
+      <View style={styles.container}>
         <Text>Add New Quest.</Text>
         <Text>What would you like your quest to be?</Text>
         <TextInput
@@ -77,7 +78,7 @@ export default function NewItemScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#F2F',
     justifyContent: 'flex-start',
     // alignItems: 'stretch',
     paddingVertical: 20,
