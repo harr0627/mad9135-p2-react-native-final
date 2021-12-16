@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
+  aboutCompany: {
+    textAlign: 'center',
+    padding: 5,
+  },
   formLabel: {
     paddingBottom: 2,
   },
@@ -38,7 +42,7 @@ const styles = StyleSheet.create({
   listItemTitle: {
     fontSize: 18,
     paddingBottom: 7,
-    backgroundColor: '#f3f3',
+    backgroundColor: '#fff',
   },
   listInstructions: {
     fontSize: 20,

@@ -41,7 +41,7 @@ export default function CompletedQuestScreen() {
         data={complete}
         renderItem={(item) => <Task task={item} />}
         keyExtractor={(item, index) => item.taskTitle + '-' + index}
-        ListEmptyComponent={<Text>No Data. Such Sad.</Text>}
+        ListEmptyComponent={<Text>No Quests have been completed.</Text>}
       />
     </SafeAreaView>
   );
