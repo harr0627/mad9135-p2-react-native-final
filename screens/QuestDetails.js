@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, Button } from 'react-native';
+import { Text, SafeAreaView, Button, Alert } from 'react-native';
 import { useData } from '../components/context/Context';
 import styles from '../components/Styles/Styles';
 import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
@@ -10,6 +10,31 @@ export default function QuestDetails({ route, navigation }) {
   //have to change the value of competed or not when they leave the page.
   const { task } = route.params;
   const [data, updateData] = useData();
+
+  const deleteCheck = () => {
+    Alert.alert(
+      "Delete",
+      "Would you like to delete this item?",
+      [
+        {
+          text:"No",
+          onPress: ()=>{
+            console.log("you pressed cancel")
+            
+          },
+          style: "cancel"
+        },
+        {
+          text:"Yes",
+          onPress: ()=>{
+            updateData('DELETE', task);
+            navigation.navigate('homeList');
+          },
+          style: "destructive"
+        },
+      ]
+    )
+  }
   let [fontsLoaded] = useFonts({
     Raleway_500Medium,
   });
@@ -51,12 +76,13 @@ export default function QuestDetails({ route, navigation }) {
       <Button
         style={{ fontFamily: 'Raleway_500Medium' }}
         title="Delete"
-        onPress={(ev) => {
-          ev.preventDefault();
-          updateData('DELETE', task);
-          navigation.navigate('homeList');
-          // add alert for (are you sure you want to delete? yes >> delete and navigate back... no >>> close and do nothing)
-        }}
+        onPress={deleteCheck}
+        // {(ev) => {
+        //   ev.preventDefault();
+        //   updateData('DELETE', task);
+        //   navigation.navigate('homeList');
+        //   // add alert for (are you sure you want to delete? yes >> delete and navigate back... no >>> close and do nothing)
+        // }}
       />
       {/* <Button
       title="Up"
