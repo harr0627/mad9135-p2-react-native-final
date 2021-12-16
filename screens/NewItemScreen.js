@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import styles from '../components/Styles/Styles';
 import { useData } from '../components/context/Context';
+import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
 
 export default function NewItemScreen({ navigation }) {
   const [data, updateData] = useData();
@@ -20,6 +21,13 @@ export default function NewItemScreen({ navigation }) {
   const [formDetails, setFormDetails] = useState('');
   const [formMax, setFormMax] = useState('');
 
+  let [fontsLoaded] = useFonts({
+    Raleway_500Medium,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -28,26 +36,36 @@ export default function NewItemScreen({ navigation }) {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Text>Add New Quest.</Text>
-          <Text>What would you like your quest to be?</Text>
+          <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+            Add New Quest.
+          </Text>
+          <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+            What would you like your quest to be?
+          </Text>
           <TextInput
+            style={{ fontFamily: 'Raleway_500Medium' }}
             placeholder="Quest Title"
             onChangeText={(text) => setFormTitle(text)}
             value={formTitle}
           />
           <Text>Details about your quest</Text>
           <TextInput
+            style={{ fontFamily: 'Raleway_500Medium' }}
             placeholder="Quest Details"
             onChangeText={(text) => setFormDetails(text)}
             value={formDetails}
           />
-          <Text>How many times will you complete this task</Text>
+          <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+            How many times will you complete this task
+          </Text>
           <TextInput
+            style={{ fontFamily: 'Raleway_500Medium' }}
             placeholder="Max Value"
             onChangeText={(text) => setFormMax(text)}
             value={formMax}
           />
           <Button
+            style={{ fontFamily: 'Raleway_500Medium' }}
             title="Start Quest"
             onPress={(ev) => {
               if (!formTitle || !formDetails || !formMax) {

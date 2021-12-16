@@ -4,6 +4,14 @@ import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
 import { SourceSansPro_400Regular } from '@expo-google-fonts/source-sans-pro';
 
 export default function Task({ task, navigation }) {
+  let [fontsLoaded] = useFonts({
+    Raleway_500Medium,
+    SourceSansPro_400Regular,
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
+
   const {
     taskTitle,
     taskDetails,
@@ -17,13 +25,19 @@ export default function Task({ task, navigation }) {
   if (taskCompleted === true) {
     return (
       <View>
-        <Text>{taskTitle}</Text>
-        <Text>{taskDetails}</Text>
+        <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
+          {taskTitle}
+        </Text>
+        <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
+          {taskDetails}
+        </Text>
         {/* <Text>Completed on: {completed}</Text> */}
-        <Text>
+        <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
           Task value: {taskValue}/{taskMaxValue}
         </Text>
-        <Text>Points earned: {questPointValue}</Text>
+        <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
+          Points earned: {questPointValue}
+        </Text>
       </View>
     );
   } else {
@@ -34,8 +48,10 @@ export default function Task({ task, navigation }) {
         }}
       >
         <View>
-          <Text>{taskTitle}</Text>
-          <Text>
+          <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
+            {taskTitle}
+          </Text>
+          <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
             {taskValue}/{taskMaxValue}
           </Text>
         </View>

@@ -8,17 +8,28 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DataProvider } from './components/context/Context';
+import {
+  useFonts,
+  Raleway_700Bold,
+  Raleway_500Medium,
+} from '@expo-google-fonts/raleway';
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Raleway_700Bold,
+    Raleway_500Medium,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <DataProvider>
       <NavigationContainer>
-        <StatusBar
-        backgroundColor="#61dafb"
-        barStyle="dark-content"
-        />
+        <StatusBar backgroundColor="#61dafb" barStyle="dark-content" />
         <Tab.Navigator
           initialRouteName="Home"
           screenOptions={({ route }) => ({
@@ -46,6 +57,10 @@ export default function App() {
             name="Home"
             options={{
               title: 'Home',
+              headerTitleStyle: {
+                fontFamily: 'Raleway_700Bold',
+                fontSize: 24,
+              },
             }}
             component={HomeScreen}
           />
@@ -53,6 +68,10 @@ export default function App() {
             name="Completed"
             options={{
               title: 'Completed',
+              headerTitleStyle: {
+                fontFamily: 'Raleway_700Bold',
+                fontSize: 24,
+              },
             }}
             component={CompletedQuestScreen}
           />
@@ -60,6 +79,10 @@ export default function App() {
             name="New"
             options={{
               title: 'Add Quest',
+              headerTitleStyle: {
+                fontFamily: 'Raleway_700Bold',
+                fontSize: 24,
+              },
             }}
             component={NewItemScreen}
           />
@@ -67,6 +90,10 @@ export default function App() {
             name="About"
             options={{
               title: 'About',
+              headerTitleStyle: {
+                fontFamily: 'Raleway_700Bold',
+                fontSize: 24,
+              },
             }}
             component={AboutScreen}
           />

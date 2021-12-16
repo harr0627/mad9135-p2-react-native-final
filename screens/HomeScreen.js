@@ -8,9 +8,23 @@ const Stack = createStackNavigator();
 
 export default function HomeScreen() {
   //stack navigation here with name list and name details
+  let [fontsLoaded] = useFonts({
+    Raleway_500Medium,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitle: 'Back',
+        headerBackTitleStyle: {
+          fontFamily: 'Raleway_500Medium',
+        },
+      }}
+    >
       <Stack.Screen
         name="homeList"
         options={{
@@ -20,6 +34,7 @@ export default function HomeScreen() {
             height: 40,
           },
           headerTitleStyle: {
+            fontFamily: 'Raleway_500Medium',
             fontWeight: 'normal',
             fontSize: 16,
           },
