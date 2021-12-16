@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import QuestDetails from './QuestDetails';
 import HomeList from './HomeList';
+import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
 
 const Stack = createStackNavigator();
 

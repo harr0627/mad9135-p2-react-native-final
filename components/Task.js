@@ -1,5 +1,7 @@
 import React from 'react';
 import { Pressable, View, Text } from 'react-native';
+import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
+import { SourceSansPro_400Regular } from '@expo-google-fonts/source-sans-pro';
 
 export default function Task({ task, navigation }) {
   const {
