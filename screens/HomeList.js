@@ -1,17 +1,24 @@
 import React from 'react';
-import { Text, FlatList, SafeAreaView, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+  Text,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import Task from '../components/Task';
 import { useData } from '../components/context/Context';
 import { useState, useEffect } from 'react';
+import styles from '../components/Styles/Styles';
 
 export default function HomeList({ navigation }) {
   const [data, updateData] = useData([]);
   const [nonComplete, setNonComplete] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setNonComplete(data.filter((el) => el.taskCompleted === false));
-    setIsLoading(false)
+    setIsLoading(false);
   }, [data]);
 
   return (
@@ -26,18 +33,7 @@ export default function HomeList({ navigation }) {
         keyExtractor={(item, index) => item.taskTitle + '-' + index}
         ListEmptyComponent={<Text>No Data. Such Sad.</Text>}
       />
-<ActivityIndicator size="large" color="#000000" animating={isLoading}/>
+      <ActivityIndicator size="large" color="#000000" animating={isLoading} />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F2F2F2',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-  },
-});

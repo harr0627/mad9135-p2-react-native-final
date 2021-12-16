@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
+import styles from '../components/Styles/Styles';
 
 export default function AboutScreen() {
   return (
@@ -12,13 +13,3 @@ export default function AboutScreen() {
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F2F2F2',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-  },
-});
