@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, SafeAreaView, Button, Alert } from 'react-native';
+import { Text, View, SafeAreaView, Button, Alert } from 'react-native';
+
 import { useData } from '../components/context/Context';
 import styles from '../components/Styles/Styles';
 import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
@@ -65,14 +66,28 @@ export default function QuestDetails({ route, navigation }) {
     }}
     >
     <SafeAreaView style={styles.container}>
-      <Text style={{ fontFamily: 'Raleway_500Medium' }}>{task.taskTitle}</Text>
-      <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+
+<View style={styles.questTitleDetails}>
+      <Text
+          style={
+            ({ fontFamily: 'SourceSansPro_400Regular' },
+            styles.listInstructions)
+          }
+        >
+          Swipe up to increase quest value{' '}
+        </Text>
+      <Text style={{ fontFamily: 'Raleway_500Medium' }, styles.listItemTitle}>{task.taskTitle}</Text>
+      <Text style={{ fontFamily: 'Raleway_500Medium' }, styles.questValueDetails}>
         {task.taskDetails}
       </Text>
-      <Text style={{ fontFamily: 'Raleway_500Medium' }}>{task.taskValue}</Text>
-      <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+</View>
+  <View style={styles.questValue}>
+      <Text style={{ fontFamily: 'Raleway_500Medium' }, styles.completeDetails}>{task.taskValue}</Text>
+      <Text style={{ fontFamily: 'Raleway_500Medium' }, styles.questValueDetails}>
         {task.taskMaxValue}
       </Text>
+ </View>
+<View style={styles.deleteBtn}>
       <Button
         style={{ fontFamily: 'Raleway_500Medium' }}
         title="Delete"
@@ -84,6 +99,7 @@ export default function QuestDetails({ route, navigation }) {
         //   // add alert for (are you sure you want to delete? yes >> delete and navigate back... no >>> close and do nothing)
         // }}
       />
+   </View>
       {/* <Button
       title="Up"
       onPress={(ev)=>{
