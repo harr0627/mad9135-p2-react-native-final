@@ -37,6 +37,20 @@ export default function QuestDetails({ route, navigation }) {
           // add alert for (are you sure you want to delete? yes >> delete and navigate back... no >>> close and do nothing)
         }}
       />
+      <Button
+      title="Up"
+      onPress={(ev)=>{
+        ev.preventDefault();
+        updateData('UPDATEUP', task)
+      }}
+      />
+      <Button
+      title="down"
+      onPress={(ev)=>{
+        ev.preventDefault();
+        updateData('UPDATEDOWN', task)
+      }}
+      />
     </SafeAreaView>
   );
 }

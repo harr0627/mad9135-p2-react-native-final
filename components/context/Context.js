@@ -130,12 +130,19 @@ const DataProvider = (props) => {
       setData(data.filter((item) => item.id !== payload.id));
       console.log('Deleted', payload.taskTitle);
       // storeDataToStorage(data)
-    } else if (action === 'UPDATE') {
+    } else if (action === 'UPDATEUP') {
       // find by id in data update properties of item
-      console.log('Updating with: ', payload.taskTitle);
+      console.log('Updating up with: ', payload.taskTitle);
       setData(
         data.map((item) => {
           if (item.id == payload.id) {
+            if (payload.taskValue != payload.taskMaxValue && !(payload.taskValue > (payload.taskMaxValue-1))){
+              payload.taskValue += 1
+            }
+            if(payload.taskValue == payload.taskMaxValue){
+              payload.taskCompleted = true
+            }
+            console.log(payload.taskCompleted)
             return payload;
           } else {
             return item;
@@ -154,6 +161,24 @@ const DataProvider = (props) => {
       // } else {
       //   return item;
       // }
+    } else if(action === "UPDATEDOWN"){
+      console.log('Updating up with: ', payload.taskTitle);
+      setData(
+        data.map((item) => {
+          if (item.id == payload.id) {
+            if(payload.taskValue==payload.taskMaxValue){
+              payload.taskCompleted = false
+            }
+            if (payload.taskValue != 0 && !(payload.taskValue < 0)){
+              payload.taskValue -= 1
+            }
+            console.log(payload.taskCompleted)
+            return payload;
+          } else {
+            return item;
+          }
+        })
+      );
     } else if (action === 'INSERT') {
       setData([
         ...data,
