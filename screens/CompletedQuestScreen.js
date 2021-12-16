@@ -31,14 +31,17 @@ export default function CompletedQuestScreen() {
   }
   return (
     <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
-      <Text style={{ fontFamily: 'Raleway_500Medium' }}>
-        Here are the points from your completed tasks: {completePoints}
+      <Text
+        style={({ fontFamily: 'Raleway_500Medium' }, styles.completedTitle)}
+      >
+        Quest Points Earned
       </Text>
+      <Text style={styles.completedPoints}>{completePoints}</Text>
       <FlatList
         data={complete}
         renderItem={(item) => <Task task={item} />}
         keyExtractor={(item, index) => item.taskTitle + '-' + index}
-        ListEmptyComponent={<Text>No Data. Such Sad.</Text>}
+        ListEmptyComponent={<Text>No Quests have been completed.</Text>}
       />
     </SafeAreaView>
   );
