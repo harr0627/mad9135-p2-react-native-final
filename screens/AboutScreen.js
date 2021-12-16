@@ -12,7 +12,7 @@ export default function AboutScreen() {
     return null;
   }
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={(styles.container, styles.about)}>
       <Text style={{ fontFamily: 'Raleway_500Medium' }}>Quest Point</Text>
       {/* if we add logo add as an image */}
       <Text style={{ fontFamily: 'Raleway_500Medium' }}>

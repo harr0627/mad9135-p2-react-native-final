@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, View, Text } from 'react-native';
 import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
 import { SourceSansPro_400Regular } from '@expo-google-fonts/source-sans-pro';
+import styles from '../components/Styles/Styles';
 
 export default function Task({ task, navigation }) {
   let [fontsLoaded] = useFonts({
@@ -25,7 +26,9 @@ export default function Task({ task, navigation }) {
   if (taskCompleted === true) {
     return (
       <View>
-        <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
+        <Text
+          style={({ fontFamily: 'Raleway_500Medium' }, styles.listItemTitle)}
+        >
           {taskTitle}
         </Text>
         <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
