@@ -82,7 +82,7 @@ export default function NewItemScreen({ navigation }) {
                 updateData('INSERT', {
                   taskTitle: formTitle,
                   taskDetails: formDetails,
-                  taskMaxValue: formMax,
+                  taskMaxValue: Math.floor(formMax),
                 });
                 setFormTitle('');
                 setFormDetails('');
