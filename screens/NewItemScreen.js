@@ -4,7 +4,6 @@ import {
   Button,
   Text,
   View,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
@@ -36,21 +35,26 @@ export default function NewItemScreen({ navigation }) {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+          <Text
+            style={
+              ({ fontFamily: 'SourceSansPro_400Regular' },
+              styles.listInstructions)
+            }
+          >
             Add New Quest.
           </Text>
-          <Text style={{ fontFamily: 'Raleway_500Medium' }}>
+          <Text style={({ fontFamily: 'Raleway_500Medium' }, styles.formLabel)}>
             What would you like your quest to be?
           </Text>
           <TextInput
-            style={{ fontFamily: 'Raleway_500Medium' }}
+            style={({ fontFamily: 'Raleway_500Medium' }, styles.formInput)}
             placeholder="Quest Title"
             onChangeText={(text) => setFormTitle(text)}
             value={formTitle}
           />
           <Text>Details about your quest</Text>
           <TextInput
-            style={{ fontFamily: 'Raleway_500Medium' }}
+            style={({ fontFamily: 'Raleway_500Medium' }, styles.formInput)}
             placeholder="Quest Details"
             onChangeText={(text) => setFormDetails(text)}
             value={formDetails}
@@ -59,7 +63,7 @@ export default function NewItemScreen({ navigation }) {
             How many times will you complete this task
           </Text>
           <TextInput
-            style={{ fontFamily: 'Raleway_500Medium' }}
+            style={({ fontFamily: 'Raleway_500Medium' }, styles.formInput)}
             placeholder="Max Value"
             onChangeText={(text) => setFormMax(text)}
             value={formMax}

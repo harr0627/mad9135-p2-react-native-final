@@ -32,9 +32,12 @@ export default function HomeList({ navigation }) {
   }
   return (
     <SafeAreaView style={styles.container} edges={['right', 'bottom', 'left']}>
-      <Text style={{ fontFamily: 'SourceSansPro_400Regular' }}>
-        We'll put the flatlist here that has a pressable that shows the
-        QuestDetails screen on press
+      <Text
+        style={
+          ({ fontFamily: 'SourceSansPro_400Regular' }, styles.listInstructions)
+        }
+      >
+        Click on a task to see more details.
       </Text>
       <FlatList
         data={nonComplete}
