@@ -3,6 +3,7 @@ import { Text, SafeAreaView, Button } from 'react-native';
 import { useData } from '../components/context/Context';
 import styles from '../components/Styles/Styles';
 import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
+import { Directions, FlingGestureHandler, State } from 'react-native-gesture-handler';
 
 export default function QuestDetails({ route, navigation }) {
   //if return will allow for the gesture handler based off the items value of quest completed.
@@ -18,6 +19,26 @@ export default function QuestDetails({ route, navigation }) {
   }
 
   return (
+    <FlingGestureHandler
+    direction={Directions.DOWN}
+    onHandlerStateChange={({nativeEvent})=>{
+      if (nativeEvent.state === State.ACTIVE){
+        if(Directions.DOWN){
+          updateData('UPDATEDOWN', task)
+        }
+      }
+    }}
+    >
+      <FlingGestureHandler
+    direction={Directions.UP}
+    onHandlerStateChange={({nativeEvent})=>{
+      if (nativeEvent.state === State.ACTIVE){
+        if(Directions.UP){
+          updateData('UPDATEUP', task)
+        }
+      }
+    }}
+    >
     <SafeAreaView style={styles.container}>
       <Text style={{ fontFamily: 'Raleway_500Medium' }}>{task.taskTitle}</Text>
       <Text style={{ fontFamily: 'Raleway_500Medium' }}>
@@ -37,7 +58,7 @@ export default function QuestDetails({ route, navigation }) {
           // add alert for (are you sure you want to delete? yes >> delete and navigate back... no >>> close and do nothing)
         }}
       />
-      <Button
+      {/* <Button
       title="Up"
       onPress={(ev)=>{
         ev.preventDefault();
@@ -50,7 +71,9 @@ export default function QuestDetails({ route, navigation }) {
         ev.preventDefault();
         updateData('UPDATEDOWN', task)
       }}
-      />
+      /> */}
     </SafeAreaView>
+    </FlingGestureHandler>
+    </FlingGestureHandler>
   );
 }
