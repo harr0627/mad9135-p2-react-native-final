@@ -1,20 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
-// import { useState, useEffect } from 'react';
-// import { useData } from '../components/context/Context';
-// import Task from '../components/Task';
-// import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import QuestDetails from './QuestDetails';
 import HomeList from './HomeList';
+import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
 
 const Stack = createStackNavigator();
 
 export default function HomeScreen() {
   //stack navigation here with name list and name details
+  let [fontsLoaded] = useFonts({
+    Raleway_500Medium,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitle: 'Back',
+        headerBackTitleStyle: {
+          fontFamily: 'Raleway_500Medium',
+        },
+      }}
+    >
       <Stack.Screen
         name="homeList"
         options={{
@@ -24,6 +34,7 @@ export default function HomeScreen() {
             height: 40,
           },
           headerTitleStyle: {
+            fontFamily: 'Raleway_500Medium',
             fontWeight: 'normal',
             fontSize: 16,
           },
@@ -48,13 +59,3 @@ export default function HomeScreen() {
     </Stack.Navigator>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F2F2F2',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-  },
-});

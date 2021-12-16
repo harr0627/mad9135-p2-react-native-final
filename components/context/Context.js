@@ -2,12 +2,12 @@ import React from 'react';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { firstData } from '../firstData';
 import { v4 as uuid } from 'uuid';
-import {useAsyncStorage} from '@react-native-async-storage/async-storage';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 const DataContext = createContext();
 
 const DataProvider = (props) => {
-  const {getItem, setItem} = useAsyncStorage('ExecMethodsQuest');
+  const { getItem, setItem } = useAsyncStorage('ExecMethodsQuest');
   const [data, setData] = useState([
     // {
     //   id: 'asldkjalskdj',
@@ -48,32 +48,30 @@ const DataProvider = (props) => {
 
   const getDataFromStorage = async () => {
     getItem()
-    .then((item)=> {
-      item = item === null ? [] : JSON.parse(item);
-      setData(item)
-    })
-    .catch(console.log)
-  }
+      .then((item) => {
+        item = item === null ? [] : JSON.parse(item);
+        setData(item);
+      })
+      .catch(console.log);
+  };
 
   const storeDataToStorage = async (value) => {
-  setItem(JSON.stringify(value))
-  .then(()=> {
-    console.log("saved data to storage")
-  })
-  }
+    setItem(JSON.stringify(value)).then(() => {
+      console.log('saved data to storage');
+    });
+  };
 
   useEffect(() => {
-    getDataFromStorage()
+    getDataFromStorage();
     // first load. async storage fetch from here. once async is initialized
     // two storaged data pieces  which will hold activeData and pastaccomplished data
     // either quest points will be the result of the added values of pastaccomplished and returned/updated
     // or quest points will be entirely it's own entity that will be updated and read seperately from accomplished. NOT THIS
   }, []);
 
-  useEffect(()=>{
-    storeDataToStorage(data)
-  },[data])// may need to use this instead of calling the store each update call. >> look up hook for skipping first load???
-  
+  useEffect(() => {
+    storeDataToStorage(data);
+  }, [data]); // may need to use this instead of calling the store each update call. >> look up hook for skipping first load???
 
   let dataExample = [
     {
@@ -130,7 +128,7 @@ const DataProvider = (props) => {
     //TODO: when updates made to data also update async storage
     if (action === 'DELETE') {
       setData(data.filter((item) => item.id !== payload.id));
-      console.log("Deleted", payload.taskTitle)
+      console.log('Deleted', payload.taskTitle);
       // storeDataToStorage(data)
     } else if (action === 'UPDATE') {
       // find by id in data update properties of item
@@ -143,19 +141,19 @@ const DataProvider = (props) => {
             return item;
           }
         })
-      ); 
+      );
       // storeDataToStorage(data)
       // updateup and updatedown >>>  data.map((item) => {
-        // if (item.id == payload.id) {
-            // another if check >> if (payload.taskvalue === payload.maxTaskValue) { // same with going down for not going below 0
-            // payload.taskValue = payload.maxTaskValue
-            // } else {
-              // payload.taskValue += 1 // and for down is -= 1
-            // }
-        //   return payload; //might have to move this in
-        // } else {
-        //   return item;
-        // }
+      // if (item.id == payload.id) {
+      // another if check >> if (payload.taskvalue === payload.maxTaskValue) { // same with going down for not going below 0
+      // payload.taskValue = payload.maxTaskValue
+      // } else {
+      // payload.taskValue += 1 // and for down is -= 1
+      // }
+      //   return payload; //might have to move this in
+      // } else {
+      //   return item;
+      // }
     } else if (action === 'INSERT') {
       setData([
         ...data,
@@ -170,7 +168,7 @@ const DataProvider = (props) => {
         },
       ]);
       // storeDataToStorage(data)
-      console.log("adding new item:", payload.taskTitle)
+      console.log('adding new item:', payload.taskTitle);
     } else {
       console.log('action payload must be DELETE, UPDATE or INSERT');
     }
