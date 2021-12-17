@@ -46,7 +46,7 @@ export default function HomeScreen() {
         options={{
           title: 'Quest Details',
           headerStyle: {
-            // backgroundColor: 'blue',
+            // backgroundColor: '#BB2020',
             height: 40,
           },
           headerTitleStyle: {

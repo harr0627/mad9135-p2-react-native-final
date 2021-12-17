@@ -96,13 +96,13 @@ const styles = StyleSheet.create({
   },
   listItemTitle: {
     fontSize: 20,
-    color: '#FFF',
+    color: '#000',
   },
   listInfo: {
-    color: 'white',
+    color: '#000',
   },
   listItem: {
-    backgroundColor: '#BB2020',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderRadius: 10,
     borderColor: '#BEC7C7',

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  ActivityIndicator,
-} from 'react-native';
+import { Text, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import Task from '../components/Task';
 import { useData } from '../components/context/Context';
 import { useState, useEffect } from 'react';
