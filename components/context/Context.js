@@ -16,7 +16,9 @@ const DataProvider = (props) => {
         item = item === null ? [] : JSON.parse(item);
         setData(item);
       })
-      .catch(console.log);
+      .catch((err) => {
+        console.err(err);
+      });
   };
 
   const storeDataToStorage = async (value) => {
@@ -52,41 +54,6 @@ const DataProvider = (props) => {
       // onFling vertical will change the taskvalue up or down within range of 0 to taskMaxValue it will also updateData each fling.
     },
   ];
-
-  // have one list where the load organizes based on "task Completed"
-
-  // function updateAnimalsList(action, payload) {
-  //   if (action === 'DELETE') {
-  //     console.log("calling delete API in context")
-  //     console.log("The action: ",action,"the payload: ",payload)
-  //     //find id in animals and delete item
-  //     //then setData as mapped array
-  //     setAnimals(animals.filter((item) => animal.id !== payload.id)); // TODO: WE NEED TO CHANGE THIS TO MATCH ANIMALS [ID] PAGE
-  //   } else if (action === 'UPDATE') {
-  //     // find by id in animals update properties of item
-  //     console.log("Payload is: ",payload)
-  //     setAnimals(
-  //       animals.map((animal) => {
-  //         console.log("one of the animals",animal)
-  //         console.log('animal id', animal.id)
-  //         console.log('payload id', payload.id)
-  //         if(animal.id == payload.id){
-  //           return payload
-  //         } else {
-  //           return animal
-  //         }
-  //       })
-  //     );
-  //   } else if (action === 'INSERT') {
-  //     setAnimals([
-  //       ...animals,
-  //       { id: uuid(), type: payload.type, coveredIn: payload.coveredIn, imageFile: 'placeholder.png'}, // check to see if this works
-  //     ]); // look at how to destructure payload either {} or ...
-  //     //new array =  ...animals + {payload} + newId
-  //   } else {
-  //     console.log('action payload must be DELETE, UPDATE or INSERT');
-  //   }
-  // }
 
   function updateData(action, payload) {
     //TODO: when updates made to data also update async storage
