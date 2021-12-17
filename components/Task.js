@@ -72,6 +72,13 @@ export default function Task({ task, navigation }) {
               ({ fontFamily: 'SourceSansPro_400Regular' }, styles.listInfo)
             }
           >
+            {taskDetails}
+          </Text>
+          <Text
+            style={
+              ({ fontFamily: 'SourceSansPro_400Regular' }, styles.listInfo)
+            }
+          >
             {taskValue}/{taskMaxValue}
           </Text>
         </View>
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
   },
   listItemTitle: {
     fontSize: 20,
-    color: 'white',
+    color: '#FFF',
   },
   listInfo: {
     color: 'white',
