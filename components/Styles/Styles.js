@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingBottom: 7,
     backgroundColor: '#fff',
+    textAlign: 'center',
   },
   listInstructions: {
     fontSize: 20,
