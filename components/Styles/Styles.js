@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   /* accent primary
 #BB2020
+
 */
   container: {
     flex: 1,
@@ -103,10 +104,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    width: 120,
-    height: 40,
+    minWidth: 120,
+    minHeight: 40,
     marginTop: 8,
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
@@ -116,8 +117,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 100,
-    height: 40,
+    minWidth: 100,
+    minHeight: 40,
     marginTop: 8,
     paddingVertical: 12,
     paddingHorizontal: 32,
