@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, Button, Alert } from 'react-native';
+import { Text, View, SafeAreaView, Pressable, Alert } from 'react-native';
 
 import { useData } from '../components/context/Context';
 import styles from '../components/Styles/Styles';
@@ -94,8 +94,6 @@ export default function QuestDetails({ route, navigation }) {
             >
               {task.taskDetails}
             </Text>
-            {/* </View> */}
-            {/* <View style={styles.questValue}> */}
             <Text
               style={
                 ({ fontFamily: 'Raleway_500Medium' }, styles.completeDetails)
@@ -112,11 +110,12 @@ export default function QuestDetails({ route, navigation }) {
             </Text>
           </View>
           <View style={styles.deleteBtn}>
-            <Button
+            <Pressable
               style={{ fontFamily: 'Raleway_500Medium' }}
-              title="Delete"
               onPress={deleteCheck}
-            />
+            >
+              <Text style={styles.buttonText}>Delete</Text>
+            </Pressable>
           </View>
         </SafeAreaView>
       </FlingGestureHandler>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   TextInput,
-  Button,
+  Pressable,
   Text,
   View,
   KeyboardAvoidingView,
@@ -11,7 +11,11 @@ import {
 } from 'react-native';
 import styles from '../components/Styles/Styles';
 import { useData } from '../components/context/Context';
-import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
+import {
+  useFonts,
+  Raleway_500Medium,
+  Raleway_700Bold,
+} from '@expo-google-fonts/raleway';
 
 export default function NewItemScreen({ navigation }) {
   const [data, updateData] = useData();
@@ -22,6 +26,7 @@ export default function NewItemScreen({ navigation }) {
 
   let [fontsLoaded] = useFonts({
     Raleway_500Medium,
+    Raleway_700Bold,
   });
 
   if (!fontsLoaded) {
@@ -68,9 +73,8 @@ export default function NewItemScreen({ navigation }) {
             onChangeText={(text) => setFormMax(text)}
             value={formMax}
           />
-          <Button
-            style={{ fontFamily: 'Raleway_500Medium' }}
-            title="Start Quest"
+          <Pressable
+            style={styles.button}
             onPress={(ev) => {
               if (!formTitle || !formDetails || !formMax) {
                 console.log('you must fill out every option');
@@ -91,7 +95,13 @@ export default function NewItemScreen({ navigation }) {
                 console.log('added quest');
               }
             }}
-          />
+          >
+            <Text
+              style={({ fontFamily: 'Raleway_500Medium' }, styles.buttonText)}
+            >
+              Start
+            </Text>
+          </Pressable>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
