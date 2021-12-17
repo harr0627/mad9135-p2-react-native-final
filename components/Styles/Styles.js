@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     paddingBottom: 7,
     textAlign: 'center',
-    color: '#FFF',
+    color: '#000',
   },
   listInstructions: {
     fontSize: 16,
@@ -68,15 +68,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 80,
     textDecorationLine: 'underline',
-    color: '#FFF',
+    color: '#000',
   },
   questValueDetails: {
     fontSize: 16,
     textAlign: 'center',
-    color: '#FFF',
+    color: '#000',
   },
   questDetailsCard: {
-    backgroundColor: '#BB2020',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderRadius: 10,
     borderColor: '#BEC7C7',

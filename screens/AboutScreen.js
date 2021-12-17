@@ -32,9 +32,6 @@ export default function AboutScreen() {
       <Text style={({ fontFamily: 'Raleway_500Medium' }, styles.aboutCompany)}>
         Executive Developers: Jacob Wilson & Kelsey Harrison
       </Text>
-      {/* <Text style={({ fontFamily: 'Raleway_500Medium' }, styles.aboutCompany)}>
-        Link to our website:{' '}
-      </Text> */}
       <Button
         title="Click Here To Our School Website"
         onPress={() =>

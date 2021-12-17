@@ -57,9 +57,13 @@ export default function App() {
             name="Home"
             options={{
               title: 'Home',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#fff',
               },
             }}
             component={HomeScreen}
@@ -68,9 +72,13 @@ export default function App() {
             name="Completed"
             options={{
               title: 'Completed',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#fff',
               },
             }}
             component={CompletedQuestScreen}
@@ -79,9 +87,13 @@ export default function App() {
             name="New"
             options={{
               title: 'Add Quest',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#fff',
               },
             }}
             component={NewItemScreen}
@@ -90,9 +102,13 @@ export default function App() {
             name="About"
             options={{
               title: 'About',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#FFF',
               },
             }}
             component={AboutScreen}
