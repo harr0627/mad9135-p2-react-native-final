@@ -13,7 +13,6 @@ export default function Task({ task, navigation }) {
   if (!fontsLoaded) {
     return null;
   }
-
   const {
     taskTitle,
     taskDetails,

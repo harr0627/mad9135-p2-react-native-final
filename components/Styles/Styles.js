@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  /* optional colour choices:
+  /* accent primary
 #BB2020
-
 */
   container: {
     flex: 1,
