@@ -41,7 +41,9 @@ export default function HomeList({ navigation }) {
       </Text>
       <FlatList
         data={nonComplete}
-        renderItem={(item) => <Task navigation={navigation} task={item} />}
+        renderItem={(item) => (
+          <Task styles={styles} navigation={navigation} task={item} />
+        )}
         keyExtractor={(item, index) => item.taskTitle + '-' + index}
         ListEmptyComponent={<Text>No Data. Such Sad.</Text>}
       />

@@ -1,6 +1,5 @@
 import React from 'react';
 import { createContext, useState, useContext, useEffect } from 'react';
-import { firstData } from '../firstData';
 import { v4 as uuid } from 'uuid';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
@@ -8,42 +7,7 @@ const DataContext = createContext();
 
 const DataProvider = (props) => {
   const { getItem, setItem } = useAsyncStorage('ExecMethodsQuest');
-  const [data, setData] = useState([
-    // {
-    //   id: 'asldkjalskdj',
-    //   completed: '', //date done when the item is completed aka when the user swipes away as the items value is at it's max value // may not add
-    //   created: 'December 17, 1995 01:24:00', // may not add
-    //   taskTitle: 'Bi-Weekly Walks',
-    //   taskDetails: 'How many times I walk in January',
-    //   taskCompleted: false,
-    //   taskValue: 0, //number changed when user flings up or do
-    //   taskMaxValue: 8, // number set by user
-    //   questPointValue: 1, // not reliant on taskMaxValue set by user.
-    //   // the onFling horizontal will hold the checks for changing taskCompleted and the updatelist call.
-    //   // onFling vertical will change the taskvalue up or down within range of 0 to taskMaxValue it will also updateData each fling.
-    // },
-    // {
-    //   id: 'asldkjalsasd',
-    //   complete: 'December 20, 1995 01:24:00',
-    //   taskTitle: 'Workouts',
-    //   taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
-    //   taskCompleted: false,
-    //   taskValue: 2,
-    //   taskMaxValue: 8,
-    //   questPointValue: 1,
-    // },
-    // {
-    //   id: 'alsasd',
-    //   completed: 'December 20, 1995 01:24:00',
-    //   created: 'December 20, 1995 01:24:00',
-    //   taskTitle: 'Workouts',
-    //   taskDetails: 'Try to work out 20 mins a day for a week from Dec 20',
-    //   taskCompleted: true,
-    //   taskValue: 8,
-    //   taskMaxValue: 8,
-    //   questPointValue: 1,
-    // },
-  ]);
+  const [data, setData] = useState([]);
   const [questPoints, setQuestPoints] = useState(0); // maybe not this (keep it local?) // i'm pretty sure we put this in the component
 
   const getDataFromStorage = async () => {
@@ -136,13 +100,16 @@ const DataProvider = (props) => {
       setData(
         data.map((item) => {
           if (item.id == payload.id) {
-            if (payload.taskValue != payload.taskMaxValue && !(payload.taskValue > (payload.taskMaxValue-1))){
-              payload.taskValue += 1
+            if (
+              payload.taskValue != payload.taskMaxValue &&
+              !(payload.taskValue > payload.taskMaxValue - 1)
+            ) {
+              payload.taskValue += 1;
             }
-            if(payload.taskValue == payload.taskMaxValue){
-              payload.taskCompleted = true
+            if (payload.taskValue == payload.taskMaxValue) {
+              payload.taskCompleted = true;
             }
-            console.log(payload.taskCompleted)
+            console.log(payload.taskCompleted);
             return payload;
           } else {
             return item;
@@ -161,18 +128,18 @@ const DataProvider = (props) => {
       // } else {
       //   return item;
       // }
-    } else if(action === "UPDATEDOWN"){
+    } else if (action === 'UPDATEDOWN') {
       console.log('Updating up with: ', payload.taskTitle);
       setData(
         data.map((item) => {
           if (item.id == payload.id) {
-            if(payload.taskValue==payload.taskMaxValue){
-              payload.taskCompleted = false
+            if (payload.taskValue == payload.taskMaxValue) {
+              payload.taskCompleted = false;
             }
-            if (payload.taskValue != 0 && !(payload.taskValue < 0)){
-              payload.taskValue -= 1
+            if (payload.taskValue != 0 && !(payload.taskValue < 0)) {
+              payload.taskValue -= 1;
             }
-            console.log(payload.taskCompleted)
+            console.log(payload.taskCompleted);
             return payload;
           } else {
             return item;
