@@ -3,6 +3,7 @@ import { Pressable, View, Text } from 'react-native';
 import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
 import { SourceSansPro_400Regular } from '@expo-google-fonts/source-sans-pro';
 import { StyleSheet } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function Task({ task, navigation }) {
   let [fontsLoaded] = useFonts({
@@ -32,6 +33,11 @@ export default function Task({ task, navigation }) {
             styles.listItemTitle)
           }
         >
+          <Ionicons
+            name={'checkmark-circle-outline'}
+            size={24}
+            color={'green'}
+          />
           {taskTitle}
         </Text>
         <Text
@@ -39,7 +45,6 @@ export default function Task({ task, navigation }) {
         >
           {taskDetails}
         </Text>
-        {/* <Text>Completed on: {completed}</Text> */}
         <Text
           style={({ fontFamily: 'SourceSansPro_400Regular' }, styles.listInfo)}
         >
@@ -65,6 +70,7 @@ export default function Task({ task, navigation }) {
               ({ fontFamily: 'SourceSansPro_400Regular' }, styles.listItemTitle)
             }
           >
+            <Ionicons name={'ellipse-outline'} size={24} color={'green'} />
             {taskTitle}
           </Text>
           <Text

@@ -110,6 +110,7 @@ export default function QuestDetails({ route, navigation }) {
             </Text>
           </View>
           <View style={styles.deleteBtn}>
+            {/* used pressable instead of Button due to styling */}
             <Pressable
               style={{ fontFamily: 'Raleway_500Medium' }}
               onPress={deleteCheck}

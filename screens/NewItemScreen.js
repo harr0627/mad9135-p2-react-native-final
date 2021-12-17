@@ -73,6 +73,7 @@ export default function NewItemScreen({ navigation }) {
             onChangeText={(text) => setFormMax(text)}
             value={formMax}
           />
+          {/* used pressable instead of Button due to styling */}
           <Pressable
             style={styles.button}
             onPress={(ev) => {
