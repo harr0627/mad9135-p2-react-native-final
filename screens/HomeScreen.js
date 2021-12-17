@@ -2,7 +2,11 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import QuestDetails from './QuestDetails';
 import HomeList from './HomeList';
-import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
+import {
+  useFonts,
+  Raleway_500Medium,
+  Raleway_700Bold,
+} from '@expo-google-fonts/raleway';
 
 const Stack = createStackNavigator();
 
@@ -10,6 +14,7 @@ export default function HomeScreen() {
   //stack navigation here with name list and name details
   let [fontsLoaded] = useFonts({
     Raleway_500Medium,
+    Raleway_700Bold,
   });
 
   if (!fontsLoaded) {
@@ -31,12 +36,12 @@ export default function HomeScreen() {
           title: 'Active Quests',
           headerStyle: {
             // backgroundColor: 'blue',
-            height: 40,
+            height: 50,
           },
           headerTitleStyle: {
-            fontFamily: 'Raleway_500Medium',
+            fontFamily: 'Raleway_700Bold',
             fontWeight: 'normal',
-            fontSize: 16,
+            fontSize: 18,
           },
         }}
         component={HomeList}
@@ -46,12 +51,12 @@ export default function HomeScreen() {
         options={{
           title: 'Quest Details',
           headerStyle: {
-            // backgroundColor: 'blue',
-            height: 40,
+            height: 50,
           },
           headerTitleStyle: {
+            fontFamily: 'Raleway_700Bold',
             fontWeight: 'normal',
-            fontSize: 16,
+            fontSize: 18,
           },
         }}
         component={QuestDetails}

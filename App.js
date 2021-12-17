@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import CompletedQuestScreen from './screens/CompletedQuestScreen';
 import NewItemScreen from './screens/NewItemScreen';
@@ -29,11 +29,13 @@ export default function App() {
   return (
     <DataProvider>
       <NavigationContainer>
-        <StatusBar backgroundColor="#61dafb" barStyle="dark-content" />
+        <StatusBar backgroundColor="#BB2020" barStyle="light-content" />
         <Tab.Navigator
           initialRouteName="Home"
           screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
+            tabBarActiveTintColor: 'black',
+            tabBarInactiveTintColor: 'gray',
+            tabBarIcon: ({ focused, size, color }) => {
               let iconName;
               if (route.name === 'Home') {
                 iconName = focused ? 'home' : 'home-outline';
@@ -48,7 +50,6 @@ export default function App() {
                   ? 'information-circle'
                   : 'information-circle-outline';
               }
-
               return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}
@@ -57,9 +58,13 @@ export default function App() {
             name="Home"
             options={{
               title: 'Home',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#fff',
               },
             }}
             component={HomeScreen}
@@ -68,9 +73,13 @@ export default function App() {
             name="Completed"
             options={{
               title: 'Completed',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#fff',
               },
             }}
             component={CompletedQuestScreen}
@@ -79,9 +88,13 @@ export default function App() {
             name="New"
             options={{
               title: 'Add Quest',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#fff',
               },
             }}
             component={NewItemScreen}
@@ -90,9 +103,13 @@ export default function App() {
             name="About"
             options={{
               title: 'About',
+              headerStyle: {
+                backgroundColor: '#BB2020',
+              },
               headerTitleStyle: {
                 fontFamily: 'Raleway_700Bold',
                 fontSize: 24,
+                color: '#FFF',
               },
             }}
             component={AboutScreen}
