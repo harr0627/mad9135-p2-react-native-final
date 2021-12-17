@@ -46,5 +46,3 @@ export default function CompletedQuestScreen() {
     </SafeAreaView>
   );
 }
-
-//we will need to change the task list to be not pressable.

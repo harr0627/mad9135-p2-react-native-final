@@ -15,8 +15,6 @@ import {
 } from 'react-native-gesture-handler';
 
 export default function QuestDetails({ route, navigation }) {
-  //if return will allow for the gesture handler based off the items value of quest completed.
-  //have to change the value of competed or not when they leave the page.
   const { task } = route.params;
   const [data, updateData] = useData();
 
