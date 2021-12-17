@@ -3,7 +3,11 @@ import { Text, View, SafeAreaView, Button, Alert } from 'react-native';
 
 import { useData } from '../components/context/Context';
 import styles from '../components/Styles/Styles';
-import { useFonts, Raleway_500Medium } from '@expo-google-fonts/raleway';
+import {
+  useFonts,
+  Raleway_500Medium,
+  Raleway_700Bold,
+} from '@expo-google-fonts/raleway';
 import {
   Directions,
   FlingGestureHandler,
@@ -37,6 +41,7 @@ export default function QuestDetails({ route, navigation }) {
   };
   let [fontsLoaded] = useFonts({
     Raleway_500Medium,
+    Raleway_700Bold,
   });
 
   if (!fontsLoaded) {
@@ -75,10 +80,10 @@ export default function QuestDetails({ route, navigation }) {
               Swipe up to increase quest value, down to decrease value or right
               to see active quests
             </Text>
+          </View>
+          <View style={styles.questDetailsCard}>
             <Text
-              style={
-                ({ fontFamily: 'Raleway_500Medium' }, styles.listItemTitle)
-              }
+              style={({ fontFamily: 'Raleway_700Bold' }, styles.listItemTitle)}
             >
               {task.taskTitle}
             </Text>
@@ -89,8 +94,8 @@ export default function QuestDetails({ route, navigation }) {
             >
               {task.taskDetails}
             </Text>
-          </View>
-          <View style={styles.questValue}>
+            {/* </View> */}
+            {/* <View style={styles.questValue}> */}
             <Text
               style={
                 ({ fontFamily: 'Raleway_500Medium' }, styles.completeDetails)
@@ -111,28 +116,8 @@ export default function QuestDetails({ route, navigation }) {
               style={{ fontFamily: 'Raleway_500Medium' }}
               title="Delete"
               onPress={deleteCheck}
-              // {(ev) => {
-              //   ev.preventDefault();
-              //   updateData('DELETE', task);
-              //   navigation.navigate('homeList');
-              //   // add alert for (are you sure you want to delete? yes >> delete and navigate back... no >>> close and do nothing)
-              // }}
             />
           </View>
-          {/* <Button
-      title="Up"
-      onPress={(ev)=>{
-        ev.preventDefault();
-        updateData('UPDATEUP', task)
-      }}
-      />
-      <Button
-      title="down"
-      onPress={(ev)=>{
-        ev.preventDefault();
-        updateData('UPDATEDOWN', task)
-      }}
-      /> */}
         </SafeAreaView>
       </FlingGestureHandler>
     </FlingGestureHandler>
