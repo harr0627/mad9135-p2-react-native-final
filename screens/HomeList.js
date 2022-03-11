@@ -117,7 +117,7 @@ export default function HomeList({ navigation }) {
           <Task styles={styles} navigation={navigation} task={item} />
         )}
         keyExtractor={(item, index) => item.taskTitle + '-' + index}
-        ListEmptyComponent={<Text>No Data. Such Sad.</Text>}
+        ListEmptyComponent={<Text>No Data. Start by adding a quest.</Text>}
       />
       <ActivityIndicator size="large" color="#000000" animating={isLoading} />
     </SafeAreaView>
