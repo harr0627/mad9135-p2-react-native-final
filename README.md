@@ -1,4 +1,4 @@
-# mad9135-p2-react-native-final
+# Quest Point
 
 This project allows users to add, update and delete quests. Users are able to set a number of times they want to do the task before completion and use swipe gestures to increase the number. This React Native application saves user data to async storage.
 
